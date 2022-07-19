@@ -1,0 +1,37 @@
+.table-wrapper {
+  border-radius: 3px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+  > .action {
+    padding: 1rem 8px;
+    border-bottom: 1px solid #ddd;
+    font-size: 1.2rem;
+  }
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+
+  td,
+  th {
+    border-bottom: 1px solid #eee;
+    text-align: left;
+    padding: 8px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+  }
+
+  tbody > tr:hover {
+    background-color: #eee;
+    cursor: pointer;
+    transition: all 0.5s ease;
+  }
+  
+  tbody > tr > td:last-child {
+    text-transform: capitalize;
+  }
+}
+
+
