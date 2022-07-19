@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 
 const STATUS_AVAILABLE = 'available';
-const STATUS_SCHEDULED = 'scheduled';
+// const STATUS_SCHEDULED = 'scheduled';
 
-function StatusOrb({ status }) {
+function Status({ status }) {
   return status === STATUS_AVAILABLE ? (
     <div className='status-orb'></div>
   ) : (
@@ -13,8 +13,8 @@ function StatusOrb({ status }) {
   );
 }
 
-StatusOrb.propTypes = {
+Status.propTypes = {
   status: PropTypes.string.isRequired,
 };
 
-export default StatusOrb;
+export default Status;

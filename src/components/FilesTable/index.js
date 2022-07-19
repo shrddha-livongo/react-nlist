@@ -2,7 +2,7 @@ import React, { useState, createRef } from 'react';
 
 import Checkbox from '../Checkbox';
 import Button from '../Button';
-import StatusOrb from '../StatusOrb';
+import Status from '../Status';
 import { files } from './files-data';
 import './styles.scss';
 
@@ -18,7 +18,6 @@ function FilesTable() {
   const selectAllRef = createRef();
 
   const handleOnChange = (position) => {
-    console.log("position", position);
     const updatedCheckedState = checkedState.map((item, i) =>
       i === position ? !item : item
     );
@@ -45,13 +44,17 @@ function FilesTable() {
     const isAllChecked = !allChecked;
 
     if (isAllChecked) {
-      const updatedCheckedState = checkedState.map((item) => true);
+      const updatedCheckedState = checkedState.map(item => true);
 
       setCheckedState(updatedCheckedState);
+      const count = updatedCheckedState.filter((state) => state === true).length;
+      setCheckedCount(count);
     } else {
-      const updatedCheckedState = checkedState.map((item) => false);
+      const updatedCheckedState = checkedState.map(item => false);
 
       setCheckedState(updatedCheckedState);
+      const count = updatedCheckedState.filter((state) => state === true).length;
+      setCheckedCount(count);
     }
     setAllChecked(isAllChecked);
   };
@@ -110,7 +113,7 @@ function FilesTable() {
               <td>{file.device}</td>
               <td>{file.path}</td>
               <td>
-                <StatusOrb status={file.status} />
+                <Status status={file.status} />
               </td>
               <td>{file.status}</td>
             </tr>
