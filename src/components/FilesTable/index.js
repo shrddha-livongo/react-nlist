@@ -17,6 +17,11 @@ function FilesTable() {
 
   const selectAllRef = createRef();
 
+  const updateCount = newCount => {
+    const count =  newCount.filter(state => state === true).length;
+    setCheckedCount(count);
+  };
+
   const handleOnChange = (position) => {
     const updatedCheckedState = checkedState.map((item, i) =>
       i === position ? !item : item
@@ -24,8 +29,7 @@ function FilesTable() {
 
     setCheckedState(updatedCheckedState);
 
-    const count = updatedCheckedState.filter((state) => state === true).length;
-    setCheckedCount(count);
+    updateCount(updatedCheckedState);
 
     const allChecked = updatedCheckedState.every((k) => k === true);
     const indeterminate = updatedCheckedState.some((k) => k === true);
@@ -47,14 +51,12 @@ function FilesTable() {
       const updatedCheckedState = checkedState.map(item => true);
 
       setCheckedState(updatedCheckedState);
-      const count = updatedCheckedState.filter((state) => state === true).length;
-      setCheckedCount(count);
+      updateCount(updatedCheckedState);
     } else {
       const updatedCheckedState = checkedState.map(item => false);
 
       setCheckedState(updatedCheckedState);
-      const count = updatedCheckedState.filter((state) => state === true).length;
-      setCheckedCount(count);
+      updateCount(updatedCheckedState);
     }
     setAllChecked(isAllChecked);
   };
